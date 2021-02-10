@@ -36,13 +36,13 @@ query_index = input('Enter the name of your movie: ')
 #print(query_index)
 for i in range(0,len(movie_rating_count_)):
     if movie_rating_count_.iloc[i]['title']== query_index:
-         a = i
-print(a)
-distances,indices = model_knn.kneighbors(movie_features.iloc[a,:].values.reshape(1,-1),n_neighbors=6)
-print(movie_features.iloc[a,:])
+         name = i
+print(name)
+distances,indices = model_knn.kneighbors(movie_features.iloc[name,:].values.reshape(1,-1),n_neighbors=6)
+print(movie_features.iloc[name,:])
 
 for i in range(0,len(distances.flatten())):
     if i == 0:
-        print('Recommendation for {0}'.format(movie_features.index[a]))
+        print('Recommendation for {0}'.format(movie_features.index[name]))
     else:
-        print('{0}:{1}'.format(i,movie_features.index[indices.flatten()[i]],distances.flatten()[i],movie_features.index[a]))
+        print('{0}:{1}'.format(i,movie_features.index[indices.flatten()[i]],distances.flatten()[i],movie_features.index[name]))
